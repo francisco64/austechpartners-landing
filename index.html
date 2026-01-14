@@ -1,0 +1,750 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Austech & Partners helps businesses grow with high-converting websites, mobile apps, real-time dashboards, and AI." />
+  <title>Austech & Partners — Data • Software • Growth</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --navy:#0B2A3C;
+      --navy2:#10384F;
+      --blue:#1E6EA8;
+      --blue2:#2A86C6;
+      --orange:#F08A1A;
+      --orange2:#FF9D2E;
+      --bg:#F6F8FB;
+      --card:#FFFFFF;
+      --text:#0E2230;
+      --muted:#5B6B78;
+      --border:rgba(11,42,60,.12);
+      --shadow:0 14px 40px rgba(11,42,60,.10);
+      --shadow2:0 10px 26px rgba(11,42,60,.10);
+      --radius:18px;
+      --radius2:24px;
+      --max:1120px;
+    }
+
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      color:var(--text);
+      background:linear-gradient(180deg, #FFFFFF 0%, var(--bg) 28%, #FFFFFF 100%);
+    }
+
+    a{ color:inherit; text-decoration:none; }
+
+    .container{ width:min(var(--max), calc(100% - 44px)); margin:0 auto; }
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:rgba(255,255,255,.82);
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid var(--border);
+    }
+
+    .topbar-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:14px 0;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width: 220px;
+    }
+
+    .brand img{
+      height:150px;
+      width:auto;
+      display:block;
+      object-fit:contain;
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      gap:18px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    .nav a{
+      font-size:13px;
+      color:var(--muted);
+      font-weight:600;
+      padding:8px 10px;
+      border-radius:999px;
+    }
+
+    .nav a:hover{ background:rgba(30,110,168,.08); color:var(--navy); }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:12px 16px;
+      border-radius:999px;
+      font-weight:800;
+      font-size:13px;
+      border:1px solid transparent;
+      cursor:pointer;
+      user-select:none;
+      white-space:nowrap;
+    }
+
+    .btn-primary{
+      background:linear-gradient(135deg, var(--orange) 0%, var(--orange2) 100%);
+      color:#1B140A;
+      box-shadow:0 12px 28px rgba(240,138,26,.26);
+    }
+
+    .btn-primary:hover{ transform: translateY(-1px); box-shadow:0 16px 34px rgba(240,138,26,.32); }
+
+    .btn-ghost{
+      background:rgba(11,42,60,.04);
+      border-color:rgba(11,42,60,.10);
+      color:var(--navy);
+    }
+
+    .btn-ghost:hover{ background:rgba(11,42,60,.06); transform: translateY(-1px); }
+
+    .mobile-cta{ display:none; }
+
+    .hero{
+      padding:56px 0 24px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:26px;
+      align-items:stretch;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:7px 12px;
+      border-radius:999px;
+      border:1px solid rgba(30,110,168,.18);
+      background:rgba(30,110,168,.06);
+      color:var(--navy);
+      font-weight:800;
+      font-size:12px;
+      width:max-content;
+    }
+
+    .pill .dot{
+      width:8px; height:8px; border-radius:50%;
+      background:linear-gradient(135deg, var(--orange), var(--orange2));
+      box-shadow:0 0 0 3px rgba(240,138,26,.15);
+    }
+
+    h1{
+      margin:14px 0 10px;
+      font-size:54px;
+      line-height:1.03;
+      letter-spacing:-.03em;
+      color:var(--navy);
+    }
+
+    .lead{
+      margin:0;
+      font-size:16px;
+      line-height:1.7;
+      color:var(--muted);
+      max-width: 62ch;
+    }
+
+    .hero-ctas{
+      margin-top:18px;
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    .trustbar{
+      margin-top:18px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      color:rgba(14,34,48,.78);
+      font-weight:700;
+      font-size:12px;
+    }
+
+    .trustbar span{
+      padding:8px 10px;
+      border-radius:999px;
+      background:rgba(11,42,60,.04);
+      border:1px solid rgba(11,42,60,.08);
+    }
+
+    .value-card{
+      background:linear-gradient(180deg, #FFFFFF 0%, rgba(246,248,251,.7) 100%);
+      border:1px solid var(--border);
+      border-radius:var(--radius2);
+      box-shadow:var(--shadow);
+      padding:18px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      overflow:hidden;
+      position:relative;
+    }
+
+    .value-card:before{
+      content:"";
+      position:absolute;
+      inset:-80px -90px auto auto;
+      width:220px;
+      height:220px;
+      border-radius:50%;
+      background:radial-gradient(circle at 30% 30%, rgba(240,138,26,.22), rgba(30,110,168,.12), transparent 65%);
+      transform:rotate(15deg);
+      pointer-events:none;
+    }
+
+    .value-title{
+      font-size:14px;
+      font-weight:900;
+      color:var(--navy);
+      margin:0 0 10px;
+    }
+
+    .value-list{
+      display:grid;
+      gap:10px;
+      margin:0;
+      padding:0;
+      list-style:none;
+    }
+
+    .value-item{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      padding:10px 12px;
+      border-radius:14px;
+      background:rgba(255,255,255,.72);
+      border:1px solid rgba(11,42,60,.08);
+    }
+
+    .check{
+      flex:0 0 auto;
+      width:20px; height:20px;
+      border-radius:7px;
+      background:rgba(240,138,26,.16);
+      display:grid;
+      place-items:center;
+      color:var(--orange);
+      font-weight:900;
+      margin-top:1px;
+    }
+
+    .value-item strong{
+      display:block;
+      font-size:12px;
+      margin:0 0 3px;
+      color:var(--navy);
+    }
+
+    .value-item span{
+      display:block;
+      font-size:12px;
+      color:var(--muted);
+      line-height:1.45;
+    }
+
+    section{ padding:44px 0; }
+
+    .section-head{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:16px;
+    }
+
+    .section-head h2{
+      margin:0;
+      font-size:28px;
+      letter-spacing:-.02em;
+      color:var(--navy);
+    }
+
+    .section-head p{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.6;
+      max-width: 62ch;
+    }
+
+    .grid-4{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:16px;
+    }
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius2);
+      box-shadow:var(--shadow2);
+      overflow:hidden;
+    }
+
+    .svc-img{
+      width:100%;
+      height:144px;
+      object-fit:cover;
+      display:block;
+      filter:saturate(1.05) contrast(1.02);
+    }
+
+    .card-body{ padding:14px 14px 16px; }
+
+    .card-title{
+      margin:0 0 6px;
+      font-weight:900;
+      color:var(--navy);
+      letter-spacing:-.01em;
+      font-size:14px;
+    }
+
+    .card-text{
+      margin:0;
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.6;
+    }
+
+    .mini{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      margin-top:10px;
+    }
+
+    .mini span{
+      font-size:11px;
+      font-weight:800;
+      color:rgba(11,42,60,.78);
+      background:rgba(11,42,60,.04);
+      border:1px solid rgba(11,42,60,.10);
+      border-radius:999px;
+      padding:6px 9px;
+    }
+
+    .grid-3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:16px;
+    }
+
+    .tile{
+      background:linear-gradient(180deg, #FFFFFF 0%, rgba(246,248,251,.72) 100%);
+      border:1px solid var(--border);
+      border-radius:var(--radius2);
+      box-shadow:var(--shadow2);
+      padding:16px;
+    }
+
+    .tile h3{
+      margin:0 0 8px;
+      font-size:14px;
+      color:var(--navy);
+      font-weight:900;
+    }
+
+    .tile p{
+      margin:0;
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.65;
+    }
+
+    .cta{
+      background:linear-gradient(135deg, rgba(30,110,168,.08) 0%, rgba(240,138,26,.10) 100%);
+      border-top:1px solid var(--border);
+      border-bottom:1px solid var(--border);
+    }
+
+    .cta-inner{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:16px;
+      align-items:stretch;
+    }
+
+    .cta-card{
+      padding:18px;
+      border-radius:var(--radius2);
+      background:rgba(255,255,255,.75);
+      border:1px solid rgba(11,42,60,.10);
+      box-shadow:var(--shadow2);
+    }
+
+    .cta-card h2{ margin:0 0 10px; font-size:26px; color:var(--navy); letter-spacing:-.02em; }
+    .cta-card p{ margin:0; color:var(--muted); line-height:1.7; font-size:13px; }
+
+    form{
+      background:rgba(255,255,255,.92);
+      border:1px solid rgba(11,42,60,.10);
+      border-radius:var(--radius2);
+      box-shadow:var(--shadow2);
+      padding:16px;
+    }
+
+    .cta-card form{
+      margin-top:14px;
+      background:transparent;
+      border:none;
+      box-shadow:none;
+      padding:0;
+    }
+
+    label{ display:block; font-size:11px; font-weight:900; color:rgba(11,42,60,.78); margin:12px 0 6px; }
+
+    input, textarea{
+      width:100%;
+      border:1px solid rgba(11,42,60,.14);
+      border-radius:14px;
+      padding:12px 12px;
+      font-size:13px;
+      font-family:inherit;
+      outline:none;
+      background:#fff;
+    }
+
+    textarea{ min-height:118px; resize:vertical; }
+
+    input:focus, textarea:focus{ border-color: rgba(30,110,168,.55); box-shadow: 0 0 0 4px rgba(30,110,168,.12); }
+
+    .form-actions{ display:flex; gap:10px; align-items:center; justify-content:space-between; margin-top:12px; flex-wrap:wrap; }
+
+    .fineprint{ font-size:11px; color:rgba(14,34,48,.68); font-weight:700; }
+
+    footer{
+      padding:26px 0 36px;
+      color:rgba(14,34,48,.72);
+      font-size:12px;
+    }
+
+    footer .foot{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+      border-top:1px solid rgba(11,42,60,.10);
+      padding-top:16px;
+    }
+
+    .links{ display:flex; gap:12px; flex-wrap:wrap; }
+    .links a{ color:rgba(14,34,48,.70); font-weight:800; }
+    .links a:hover{ color:var(--navy); }
+
+    @media (max-width: 980px){
+      .hero-grid{ grid-template-columns: 1fr; }
+      h1{ font-size:44px; }
+      .grid-4{ grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 560px){
+      .nav{ display:none; }
+      .mobile-cta{ display:inline-flex; }
+      .brand{ min-width:auto; }
+      .grid-4{ grid-template-columns: 1fr; }
+      .grid-3{ grid-template-columns: 1fr; }
+      h1{ font-size:38px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="#top" aria-label="Austech & Partners">
+        <img src="logo.jpg" alt="Austech & Partners" />
+      </a>
+
+      <nav class="nav" aria-label="Primary">
+        <a href="#services">Services</a>
+        <a href="#results">What you get</a>
+        <a href="#why">Why us</a>
+        <a class="btn btn-primary" href="#contact">Get a quote</a>
+      </nav>
+
+      <a class="btn btn-primary mobile-cta" href="#contact">Get a quote</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="pill"><span class="dot"></span> Practical solutions that drive growth</div>
+          <h1>Sell more. Operate smarter. Decide with confidence.</h1>
+          <p class="lead">
+            Austech &amp; Partners helps businesses turn data and technology into measurable results.
+            We build conversion-focused web experiences, mobile apps, real-time dashboards, and AI systems — designed around your KPIs.
+          </p>
+
+          <div class="hero-ctas">
+            <a class="btn btn-primary" href="#contact">Start a project</a>
+            <a class="btn btn-ghost" href="#services">See services</a>
+          </div>
+
+          <div class="trustbar" aria-label="Trust signals">
+            <span>Fair pricing, clear communication</span>
+            <span>University of Melbourne • Stanford</span>
+            <span>International experience</span>
+          </div>
+        </div>
+
+        <aside class="value-card" aria-label="What we focus on">
+          <p class="value-title">Built for growth, efficiency &amp; profitability</p>
+          <ul class="value-list">
+            <li class="value-item">
+              <div class="check">✓</div>
+              <div>
+                <strong>Conversion-first delivery</strong>
+                <span>Messaging, UX, analytics, and lead capture — aligned to revenue.</span>
+              </div>
+            </li>
+            <li class="value-item">
+              <div class="check">✓</div>
+              <div>
+                <strong>Operational clarity</strong>
+                <span>Dashboards that show what matters in real time — not vanity metrics.</span>
+              </div>
+            </li>
+            <li class="value-item">
+              <div class="check">✓</div>
+              <div>
+                <strong>Decision intelligence</strong>
+                <span>Forecasts, drivers, and “what to do next” recommendations.</span>
+              </div>
+            </li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Services designed to move the needle</h2>
+            <p>One page, one goal: make it obvious what you do — and make it easy for clients to contact you.</p>
+          </div>
+        </div>
+
+        <div class="grid-4">
+          <article class="card">
+            <img class="svc-img" src="https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?fm=jpg&ixlib=rb-4.1.0&q=60&w=1600" alt="Workspace with laptop and coffee" loading="lazy" />
+            <div class="card-body">
+              <h3 class="card-title">High-converting websites</h3>
+              <p class="card-text">Landing pages and full sites that turn visits into leads — with tracking built in.</p>
+              <div class="mini"><span>UX + copy</span><span>SEO basics</span><span>Lead capture</span></div>
+            </div>
+          </article>
+
+          <article class="card">
+            <img class="svc-img" src="https://images.unsplash.com/photo-1628233345409-349459e6f79a?fm=jpg&ixlib=rb-4.1.0&q=60&w=1600" alt="Smartphone in hand" loading="lazy" />
+            <div class="card-body">
+              <h3 class="card-title">Mobile apps</h3>
+              <p class="card-text">Customer apps and internal tools that simplify workflows and improve experience.</p>
+              <div class="mini"><span>iOS &amp; Android</span><span>Integrations</span><span>Fast iterations</span></div>
+            </div>
+          </article>
+
+          <article class="card">
+            <img class="svc-img" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?fm=jpg&ixlib=rb-4.1.0&q=60&w=1600" alt="Analytics dashboard on a screen" loading="lazy" />
+            <div class="card-body">
+              <h3 class="card-title">Real-time dashboards</h3>
+              <p class="card-text">Interactive KPIs that reveal performance, bottlenecks, and drivers — in one place.</p>
+              <div class="mini"><span>Single source of truth</span><span>Drill-down</span><span>Automated refresh</span></div>
+            </div>
+          </article>
+
+          <article class="card">
+            <img class="svc-img" src="https://images.unsplash.com/photo-1737505599159-5ffc1dcbc08f?fm=jpg&ixlib=rb-4.1.0&q=60&w=1600" alt="Abstract AI brain illustration" loading="lazy" />
+            <div class="card-body">
+              <h3 class="card-title">AI &amp; machine learning</h3>
+              <p class="card-text">Forecasting, segmentation, anomaly detection, and decision support tied to business KPIs.</p>
+              <div class="mini"><span>Forecasts</span><span>Automation</span><span>Decision support</span></div>
+            </div>
+          </article>
+        </div>
+
+        <div style="height:18px"></div>
+
+        <div class="grid-3" id="results">
+          <div class="tile">
+            <h3>Clear KPIs everyone agrees on</h3>
+            <p>You’ll know what matters, how it’s measured, and what “good” looks like — no fluff.</p>
+          </div>
+          <div class="tile">
+            <h3>Answers that stay current</h3>
+            <p>Automated data flows and dashboards so decisions don’t depend on manual reports.</p>
+          </div>
+          <div class="tile">
+            <h3>Next steps you can act on</h3>
+            <p>Not just “what changed” — but why it changed, and what to do about it.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="why">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Why Austech &amp; Partners</h2>
+            <p>We’re not here to sell complexity. We focus on practical delivery, measurable outcomes, and clear communication.</p>
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <div class="tile">
+            <h3>Business-first engineering</h3>
+            <p>We start with your outcome (revenue, efficiency, profitability), then build the system to support it.</p>
+          </div>
+          <div class="tile">
+            <h3>High standards, hands-on</h3>
+            <p>Highly qualified immigrant professionals with international experience across industries.</p>
+          </div>
+          <div class="tile">
+            <h3>Maintainable solutions</h3>
+            <p>Clean delivery, documentation, and handover so your team can keep moving after launch.</p>
+          </div>
+        </div>
+
+        <div style="height:16px"></div>
+
+        <div class="grid-3">
+          <div class="tile">
+            <h3>Growth &amp; strategy support</h3>
+            <p>Strategic marketing, business creation, import/export support, and business strategy focused on measurable results.</p>
+          </div>
+          <div class="tile">
+            <h3>Fast, lightweight collaboration</h3>
+            <p>Short feedback loops and weekly updates — so you see progress early and avoid surprises.</p>
+          </div>
+          <div class="tile">
+            <h3>Fair pricing</h3>
+            <p>Transparent scope and practical options so you can start small and expand when it’s working.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="contact">
+      <div class="container" style="padding:44px 0;">
+        <div class="cta-inner">
+          <div class="cta-card">
+            <h2>Tell us what you’re trying to achieve</h2>
+            <p>
+              We’ll reply with clarifying questions and a recommended approach.
+              If you already know what you want, send your scope — we’ll turn it into a plan.
+            </p>
+
+            <div style="height:12px"></div>
+            <div class="hero-ctas" style="margin-top:0;">
+              <a class="btn btn-ghost" href="mailto:reales.francisco1@gmail.com,nicozam1203@gmail.com?subject=Project%20inquiry%20%E2%80%94%20Austech%20%26%20Partners">Email us</a>
+            </div>
+
+            <form id="contactForm" novalidate>
+              <label for="message">Message</label>
+              <textarea id="message" name="message" required placeholder="Briefly describe what you want to build or improve, and the outcome you care about."></textarea>
+
+              <label for="replyTo">Your email (optional)</label>
+              <input id="replyTo" name="replyTo" type="email" placeholder="you@company.com" autocomplete="email" />
+
+              <div class="form-actions">
+                <button class="btn btn-primary" id="sendBtn" type="button">Send message</button>
+                <span class="fineprint">Opens your email client with the message prefilled.</span>
+              </div>
+            </form>
+
+            <p class="fineprint" style="margin-top:12px">Messages go to <strong>reales.francisco1@gmail.com</strong> and <strong>nicozam1203@gmail.com</strong>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container foot">
+      <div>© 2026 Austech &amp; Partners. All rights reserved.</div>
+      <div class="links">
+        <a href="#top">Back to top</a>
+        <a href="mailto:reales.francisco1@gmail.com,nicozam1203@gmail.com?subject=Project%20inquiry%20%E2%80%94%20Austech%20%26%20Partners">Email us</a>
+      </div>
+    </div>
+
+    <div class="container" style="margin-top:10px; font-size:11px; color:rgba(14,34,48,.60);">
+      Service images: Unsplash (replace anytime with your own). Websites: ian dooley • Mobile: Leio McLaren • Dashboards: Luke Chesser • AI: Ecliptic Graphic.
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      var TO = 'reales.francisco1@gmail.com,nicozam1203@gmail.com';
+      var btn = document.getElementById('sendBtn');
+      var form = document.getElementById('contactForm');
+      if(!btn || !form) return;
+
+      function openEmail(){
+        var msgEl = document.getElementById('message');
+        var replyEl = document.getElementById('replyTo');
+
+        var message = (msgEl && msgEl.value) ? msgEl.value.trim() : '';
+        var replyTo = (replyEl && replyEl.value) ? replyEl.value.trim() : '';
+
+        var subject = 'Project inquiry — Austech & Partners';
+        var bodyParts = [];
+
+        if(replyTo){
+          bodyParts.push('Reply-to email: ' + replyTo);
+          bodyParts.push('');
+        }
+
+        bodyParts.push(message || '');
+
+        var url = 'mailto:' + TO +
+          '?subject=' + encodeURIComponent(subject) +
+          '&body=' + encodeURIComponent(bodyParts.join('\n'));
+
+        window.location.href = url;
+      }
+
+      btn.addEventListener('click', openEmail);
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        openEmail();
+      });
+    })();
+  </script>
+</body>
+</html>
